@@ -7,6 +7,7 @@ import unittest
 import tempfile
 import os
 import random
+import time
 
 import slow_code_examples as slow
 import optimized_code as fast
@@ -191,8 +192,6 @@ class TestPerformanceImprovement(unittest.TestCase):
     
     def test_string_concat_faster(self):
         """Verify optimized string concat is faster."""
-        import time
-        
         n = 5000
         
         start = time.time()
@@ -209,8 +208,6 @@ class TestPerformanceImprovement(unittest.TestCase):
     
     def test_membership_check_faster(self):
         """Verify optimized membership check is faster."""
-        import time
-        
         items = list(range(5000))
         search_items = random.sample(range(7000), 500)
         

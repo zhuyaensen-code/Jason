@@ -34,7 +34,12 @@ def benchmark(slow_func: Callable, fast_func: Callable, *args, **kwargs) -> Tupl
     # Verify results are equivalent (for most cases)
     # Some cases might have different return types but same values
     
-    speedup = slow_time / fast_time if fast_time > 0 else float('inf')
+    # Handle division by zero and extremely small times
+    EPSILON = 1e-9
+    if fast_time < EPSILON:
+        speedup = float('inf')
+    else:
+        speedup = slow_time / fast_time
     
     return slow_time, fast_time, speedup
 

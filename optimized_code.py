@@ -47,8 +47,10 @@ def optimized_loop_condition(data):
 def optimized_list_processing(n=1000000):
     """
     Use generator expressions for memory efficiency and single pass.
+    Pipeline: range(n) -> square -> filter even -> double -> sum
     """
     # Single pass using generator - no intermediate lists
+    # Pipeline: square each number, filter evens, double, then sum
     return sum(x * 2 for x in (x * x for x in range(n)) if x % 2 == 0)
 
 
